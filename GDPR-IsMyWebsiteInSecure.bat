@@ -1,3 +1,21 @@
+@ECHO OFF
+REM BFCPEOPTIONSTART
+REM Advanced BAT to EXE Converter www.BatToExeConverter.com
+REM BFCPEEXE=D:\Documents\_Security\GDPR-IsMyWebsiteInsecure.exe
+REM BFCPEICON=C:\Program Files (x86)\Advanced BAT to EXE Converter PRO v4.11\ab2econv411pro\icons\icon11.ico
+REM BFCPEICONINDEX=-1
+REM BFCPEEMBEDDISPLAY=0
+REM BFCPEEMBEDDELETE=1
+REM BFCPEADMINEXE=0
+REM BFCPEINVISEXE=0
+REM BFCPEVERINCLUDE=1
+REM BFCPEVERVERSION=1.3.0.0
+REM BFCPEVERPRODUCT=GDPR - Is My Website inSecure
+REM BFCPEVERDESC=tool to test if website is insecure
+REM BFCPEVERCOMPANY=Oscar Azevedo
+REM BFCPEVERCOPYRIGHT=Free tool
+REM BFCPEOPTIONEND
+@ECHO ON
 @echo off
 color 1f
 cls
@@ -21,24 +39,24 @@ rem defaults
 title "Is my Website inSecure?"
 cls
 echo.
-echo. รรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรยป
-echo. ยบ    GDPR - Is my Website inSecure?                      ยบ
-echo. ยบ                                                        ยบ
-echo. ยบ  1. Test Website                                       ยบ
-echo. ยบ  2.   choose browser (optional)                        ยบ
-echo. ยบ  3.   choose protocol (optional)                       ยบ
-echo. ยบ                                                        ยบ
-echo. ยบ  F. Free Webtools used and Metrics                     ยบ
-echo. ยบ  L. Legal and Privacy Terms                            ยบ
-echo. ยบ  X. Exit                                               ยบ
-echo. ยบ                                                        ยบ
-echo. ยบ  Important: You should only use this tool to analyze   ยบ
-echo. ยบ  websites whose owners have given you permission to do ยบ
-echo. ยบ  so. In addition, always make a vulnerability analysis ยบ
-echo. ยบ  (ex. OWASP). This is a Free Tool.                     ยบ
-echo. ยบ                                                        ยบ
-echo. ยบ (c)2019 r1.3 Oscar Azevedo                             ยบ
-echo. รรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรรยผ
+echo. ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+echo. บ    GDPR - Is my Website inSecure?                      บ
+echo. บ                                                        บ
+echo. บ  1. Test Website                                       บ
+echo. บ  2.   choose browser (optional)                        บ
+echo. บ  3.   choose protocol (optional)                       บ
+echo. บ                                                        บ
+echo. บ  F. Free Webtools used and Metrics                     บ
+echo. บ  L. Legal and Privacy Terms                            บ
+echo. บ  X. Exit                                               บ
+echo. บ                                                        บ
+echo. บ  Important: You should only use this tool to analyze   บ
+echo. บ  websites whose owners have given you permission to do บ
+echo. บ  so. In addition, always make a vulnerability analysis บ
+echo. บ  (ex. OWASP). This is a Free Tool.                     บ
+echo. บ                                                        บ
+echo. บ (c)2019 r1.3 Oscar Azevedo                             บ
+echo. ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo.
 
 choice /c 123FLX /n /m " Choose an option (1,2,3,L,T,X) ? "
@@ -54,7 +72,7 @@ rem remove the protocol http:// or https:// from the website name
 set host=!site:*//=!
 
 rem remove forward slash
-set host=!host:/=!
+if [%host:~-1%]==[/] (set host=!host:~0,-1!)
 
 if [%browser%]==[chrome.exe]  (set private=incognito)
 if [%browser%]==[msedge.exe]  (set private=private)
