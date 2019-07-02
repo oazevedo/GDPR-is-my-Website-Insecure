@@ -1,7 +1,7 @@
 # GDPR-is-my-Website-Insecure
 
 Use "GDPR-IsMyWebsiteInsecure.exe" tool (script) to  tests websites if:
-- hosting is secure (only tcp/443, ssl, CSP, DNSSEC, etc.)
+- hosting is secure (only tcp/443, SSL, CSP, DNSSEC, etc.)
 - is GDPR cookies compliance
 - is performance
 - and without html and css errors
