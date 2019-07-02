@@ -6,6 +6,6 @@ Use "GDPR-IsMyWebsiteInsecure.exe" tool (script) to  tests websites if:
 - is performance
 - and without html and css errors
 
-Important: You should only use this tool to analyze websites whose owners have given you permission to do so. In addition always make a vulnerability analysis (ex. OWASP).
+Important: You should only use this tool to analyze websites whose owners have given you permission to do so. In addition always make a vulnerability analysis (ex. OWASP https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project ).
 
 This is a Free Tool.
