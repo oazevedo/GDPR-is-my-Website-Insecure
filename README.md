@@ -1,7 +1,7 @@
 # GDPR-is-my-Website-Insecure
 
 
-- "GDPR-IsMyWebsiteInsecure.exe" is free tool to test if a website is inSecure and GDPR cookie compliance. In addition always make a vulnerability analysis (ex. https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project ).
+- "GDPR-IsMyWebsiteInsecure.exe" is a free tool to test if a website is inSecure and GDPR cookie compliance. In addition always make a vulnerability analysis (ex. https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project ).
 Important: You should only use this tool to analyze websites whose owners have given you permission to do so.
 
 - "GDPR - Is My Website inSecure.pdf" is a short presentation
