@@ -6,6 +6,6 @@ Important: You should only use this tool to analyze websites whose owners have g
 
 - "GDPR - Is My Website inSecure.pdf" is a short presentation
 
-- "GDPR Websites - technical requirements.pdf" for hosting and developers
+- "GDPR Websites - technical requirements.pdf" is a guide for hosting and developers
 
-- "GDPR Websites - security, privacy, performance, quality.pdf" for hosting, developers, data protection officer and owner of website
+- "GDPR Websites - security, privacy, performance, quality.pdf" is a guide for hosting, developers and data protection officer
