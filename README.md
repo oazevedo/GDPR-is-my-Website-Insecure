@@ -1,11 +1,11 @@
 # GDPR-is-my-Website-Insecure
 
-Use "GDPR-IsMyWebsiteInsecure.exe" tool (script) to  tests websites if:
-- hosting is secure (only tcp/443, SSL, CSP, DNSSEC, etc.)
-- is GDPR cookies compliance
-- is performance
-- and without html and css errors
 
-Important: You should only use this tool to analyze websites whose owners have given you permission to do so. In addition always make a vulnerability analysis (ex. OWASP https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project ).
+- "GDPR-IsMyWebsiteInsecure.exe" is free tool to test if a website is inSecure and GDPR cookie compliance. In addition always make a vulnerability analysis (ex. OWASP https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project ).
+Important: You should only use this tool to analyze websites whose owners have given you permission to do so.
 
-This is a Free Tool.
+- "GDPR - Is My Website inSecure.pdf" is a short presentation
+
+- "GDPR Websites - technical requirements.pdf" for hosting and developers
+
+- "GDPR Websites - security, privacy, performance, quality.pdf" for hosting, developers, data protection officer and owner of website
