@@ -9,3 +9,7 @@ Important: You should only use this tool to analyze websites whose owners have g
 - "GDPR Websites - technical requirements.pdf" is a guide for hosting and developers
 
 - "GDPR Websites - security, privacy, performance, quality.pdf" is a guide for hosting, developers and data protection officer
+
+
+SHA256 hash of GDPR-IsMyWebsiteInSecure-v1.4.exe:
+28365ad7728f21b118cb5b072f167f6a011fcbec9a075cc6833511543933b6da
