@@ -37,7 +37,7 @@ echo. º  websites whose owners have given you permission to do º
 echo. º  so. In addition, always make a vulnerability analysis º
 echo. º  (ex. OWASP). This is a Free Tool.                     º
 echo. º                                                        º
-echo. º (c)2019 r1.4.1 Oscar Azevedo                           º
+echo. º (c)2019 r1.5 Oscar Azevedo                             º
 echo. ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 echo.
 
@@ -84,8 +84,13 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://sitecheck.sucuri.net/results/%url%"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://domain-checker.valimail.com/dmarc/"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://www.ssllabs.com/ssltest/analyze.html?d=%url%&hideResults=on&latest"
 timeout /t 2 >nul
+
+
 
 start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/index.html?host=%host%"
 timeout /t 2 >nul
@@ -94,6 +99,9 @@ start %browser% -new-tab -%private% "https://internet.nl/site/%host%/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.immuniweb.com/darkweb/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.ezigdpr.com/products/gdpr-website-compliance-checker"
