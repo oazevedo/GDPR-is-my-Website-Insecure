@@ -37,7 +37,7 @@ echo. º  websites whose owners have given you permission to do º
 echo. º  so. In addition, always make a vulnerability analysis º
 echo. º  (ex. OWASP). This is a Free Tool.                     º
 echo. º                                                        º
-echo. º (c)2019 r1.4 Oscar Azevedo                             º
+echo. º (c)2019 r1.4.1 Oscar Azevedo                           º
 echo. ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 echo.
 
