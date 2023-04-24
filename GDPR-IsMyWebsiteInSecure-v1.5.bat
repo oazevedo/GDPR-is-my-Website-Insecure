@@ -21,24 +21,24 @@ rem defaults
 title "Is my Website inSecure?"
 cls
 echo.
-echo. ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
-echo. º    GDPR - Is my Website inSecure?                      º
-echo. º                                                        º
-echo. º  1. Test Website                                       º
-echo. º  2.   choose browser (optional)                        º
-echo. º  3.   choose protocol (optional)                       º
-echo. º                                                        º
-echo. º  F. Free Webtools used and Metrics                     º
-echo. º  L. Legal and Privacy Terms                            º
-echo. º  X. Exit                                               º
-echo. º                                                        º
-echo. º  Important: You should only use this tool to analyze   º
-echo. º  websites whose owners have given you permission to do º
-echo. º  so. In addition, always make a vulnerability analysis º
-echo. º  (ex. OWASP). This is a Free Tool.                     º
-echo. º                                                        º
-echo. º (c)2019 r1.5 Oscar Azevedo                             º
-echo. ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+rem ===========================================================
+echo.     GDPR - Is my Website inSecure?                      
+echo.                                                         
+echo.   1. Test Website                                       
+echo.   2.   choose browser (optional)                        
+echo.   3.   choose protocol (optional)                       
+echo.                                                         
+echo.   F. Free Webtools used and Metrics                     
+echo.   L. Legal and Privacy Terms                            
+echo.   X. Exit                                               
+echo.                                                         
+echo.   Important: You should only use this tool to analyze   
+echo.   websites whose owners have given you permission to do 
+echo.   so. In addition, always make a vulnerability analysis 
+echo.   (ex. OWASP). This is a Free Tool.                     
+echo.                                                         
+echo.  (c)2019 r1.5 Oscar Azevedo                             
+rem ===========================================================
 echo.
 
 choice /c 123FLX /n /m " Choose an option (1,2,3,F,L,X) ? "
