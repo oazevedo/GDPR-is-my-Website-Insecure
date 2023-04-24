@@ -99,8 +99,8 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://www.ezigdpr.com/products/gdpr-website-compliance-checker"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://batchspeed.com/"
-timeout /t 2 >nul
+rem start %browser% -new-tab -%private% "https://batchspeed.com/"
+rem timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://developers.google.com/speed/pagespeed/insights/?url=%url%"
 timeout /t 2 >nul
@@ -154,7 +154,7 @@ goto :menu
 @echo.    "https://www.ezigdpr.com/"         metric: no action required
 @echo.
 @echo. 3. category:quality, target:developers
-@echo.    "https://batchspeed.com/"          metric: 90
+rem @echo.    "https://batchspeed.com/"          metric: 90
 @echo.    "https://developers.google.com/"   metric: 90 
 @echo.    "https://gtmetrix.com/"            metric: 90
 @echo.    "https://validator.w3.org/"        metric: no errors
