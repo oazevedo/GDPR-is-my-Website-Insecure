@@ -63,9 +63,12 @@ if [%browser%]==[firefox.exe] (set private=private-window)
 rem url = protocol + host
 (set url=%protocol%%host%)
 
+for /f "tokens=2,3 delims=." %%a in ("%host%") do set domain=%%a.%%b
+
 @echo.
 @echo. protocol = %protocol%
 @echo.     site = %host%
+@echo.   domain = %domain%
 @echo.      url = %url%
 @echo.  browser = %browser%
 @echo.  private = %private%
@@ -84,13 +87,13 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://sitecheck.sucuri.net/results/%url%"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://domain-checker.valimail.com/dmarc/"
+start %browser% -new-tab -%private% "https://domain-checker.valimail.com/dmarc/%domain%"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.ssllabs.com/ssltest/analyze.html?d=%url%&hideResults=on&latest"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://securityheaders.com/?followRedirects=on&hide=on&q=%host%"
+start %browser% -new-tab -%private% "https://securityheaders.com/?followRedirects=on&hide=on&q=%url%"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/index.html?host=%host%"
@@ -193,6 +196,7 @@ goto :menu
 :end
 (set site=)
 (set url=)
+(set domain=)
 (set private=)
 (set browser=)
 (set protocol=)
