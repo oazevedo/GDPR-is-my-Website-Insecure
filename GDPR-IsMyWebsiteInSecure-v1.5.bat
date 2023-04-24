@@ -90,7 +90,8 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://www.ssllabs.com/ssltest/analyze.html?d=%url%&hideResults=on&latest"
 timeout /t 2 >nul
 
-
+start %browser% -new-tab -%private% "https://securityheaders.com/?followRedirects=on&hide=on&q=%host%"
+timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/index.html?host=%host%"
 timeout /t 2 >nul
