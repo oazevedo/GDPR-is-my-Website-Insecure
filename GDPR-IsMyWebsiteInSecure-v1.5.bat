@@ -102,6 +102,9 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://internet.nl/site/%host%/"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project"
 timeout /t 2 >nul
 
