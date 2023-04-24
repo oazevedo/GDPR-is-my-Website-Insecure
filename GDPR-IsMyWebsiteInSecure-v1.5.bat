@@ -6,7 +6,7 @@ cls
 rem ===========================================================
 rem developed by Oscar Azevedo
 rem oscar.azevedo@aeportugal.pt, oscar.msazevedo@gmail.com
-rem 2019-06-29
+rem 2023-04-24
 rem run webtools to see if website is insecure
 rem ===========================================================
 
@@ -21,7 +21,7 @@ rem defaults
 title "Is my Website inSecure?"
 cls
 echo.
-rem ===========================================================
+echo. ===========================================================
 echo.     GDPR - Is my Website inSecure?                      
 echo.                                                         
 echo.   1. Test Website                                       
@@ -38,7 +38,7 @@ echo.   so. In addition, always make a vulnerability analysis
 echo.   (ex. OWASP). This is a Free Tool.                     
 echo.                                                         
 echo.  (c)2019 r1.5 Oscar Azevedo                             
-rem ===========================================================
+echo. ===========================================================
 echo.
 
 choice /c 123FLX /n /m " Choose an option (1,2,3,F,L,X) ? "
