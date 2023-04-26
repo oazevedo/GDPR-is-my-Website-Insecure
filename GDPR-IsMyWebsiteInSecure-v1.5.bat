@@ -102,6 +102,9 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/index.html?host=%host%"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://webcheck.pt/pt/dns/loading.php?domain=%domain%"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://internet.nl/site/%host%/"
 timeout /t 2 >nul
 
