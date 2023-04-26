@@ -12,4 +12,4 @@ Important: You should only use this tool to analyze websites whose owners have g
 
 
 SHA256 hash of GDPR-IsMyWebsiteInSecure-v1.5.bat:
-6f2d192f53043d929d5cb134ff118ec5a18344e500f3ca13fff257a99e2025d9
+fd1b09e20ff9bfc95f8c5560f35b9473c13c5dd6bfa8ddc8b8b76e697cb9730e
