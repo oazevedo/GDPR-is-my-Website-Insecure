@@ -35,7 +35,7 @@ echo.
 echo.   Important: You should only use this tool to analyze   
 echo.   websites whose owners have given you permission to do 
 echo.   so. In addition, always make a vulnerability analysis 
-echo.   (ex. OWASP). This is a Free Tool.                     
+echo.   (ex. OWASP ZAP). This is a Free Tool.                     
 echo.                                                         
 echo.  (c)2019 r1.5 Oscar Azevedo                             
 echo. ===========================================================
@@ -166,14 +166,21 @@ goto :menu
 @echo. We use the following free web tools. Our thanks and appreciation to those who develop and maintain.
 @echo.
 @echo. 1. category:security, target:hosting
-@echo.    "https://pentest-tools.com"        metric: tcp/443
-@echo.    "https://www.wpsec.com/"           metric: no vulnerabilities, no outdated plugins       
-@echo.    "https://sitecheck.sucuri.net/"    metric: no malware, no outdated software
-@echo.    "https://www.ssllabs.com/ssltest"  metric: A
-@echo.    "https://observatory.allizom.org/" metric: A
-@echo.    "https://internet.nl/"             metric: 90
-@echo.    "https://www.owasp.org/"           metric: no vulnerabilities
-@echo.
+@echo.    "https://pentest-tools.com"                  metric: tcp/443
+@echo.    "https://www.wpsec.com/"                     metric: no vulnerabilities, no outdated plugins       
+@echo.    "https://sitecheck.sucuri.net/"              metric: no malware, no outdated software
+@echo.    "https://haveibeenpwned.com/"                metric: no email in a data breach
+@echo.    "https://domain-checker.valimail.com/dmarc"  metric: dmarc configured
+@echo.    "https://www.ssllabs.com/ssltest"            metric: A
+@echo.    "https://securityheaders.com/"               metric: security headers configured
+@echo.    "https://observatory.allizom.org/"           metric: A
+@echo.    "https://webcheck.pt/"                       metric: Cumpre
+@echo.    "https://internet.nl/"                       metric: 90
+@echo.    "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"  metric: no vulnerabilities
+@echo.    "https://www.owasp.org/"                     metric: no vulnerabilities
+@echo.    "https://owasp.org/www-project-top-ten/"     metric: n/a
+@echo.    "https://www.immuniweb.com/darkweb/"         metric: no Dark Web Exposure
+@echo.   
 @echo. 2. category:GDPR cookies, target:developers
 @echo.    "https://www.ezigdpr.com/"         metric: no action required
 @echo.
