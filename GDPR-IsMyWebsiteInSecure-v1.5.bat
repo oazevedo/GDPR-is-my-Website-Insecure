@@ -111,6 +111,9 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://owasp.org/www-project-top-ten/"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://www.immuniweb.com/darkweb/"
 timeout /t 2 >nul
 
