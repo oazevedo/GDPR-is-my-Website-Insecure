@@ -87,6 +87,9 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://sitecheck.sucuri.net/results/%url%"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://haveibeenpwned.com/"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://domain-checker.valimail.com/dmarc/%domain%"
 timeout /t 2 >nul
 
