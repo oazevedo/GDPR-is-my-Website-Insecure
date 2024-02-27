@@ -11,5 +11,6 @@ Important: You should only use this tool to analyze websites whose owners have g
 - "GDPR Websites - security, privacy, performance, quality.pdf" is a guide for hosting, developers and data protection officer
 
 
-SHA256 hash of GDPR-IsMyWebsiteInSecure.bat:
-fd1b09e20ff9bfc95f8c5560f35b9473c13c5dd6bfa8ddc8b8b76e697cb9730e
+
+GDPR-IsMyWebsiteInSecure.bat  
+SHA256: FE3836E63BE5AB2FB6270A3073DFC753C96243ED4A75A01AD0161D9BE777252F
