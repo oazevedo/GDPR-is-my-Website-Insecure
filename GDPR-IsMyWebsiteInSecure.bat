@@ -6,15 +6,15 @@ cls
 rem ===========================================================
 rem developed by Oscar Azevedo
 rem oscar.azevedo@aeportugal.pt, oscar.msazevedo@gmail.com
-rem 2023-04-24
 rem run webtools to see if website is insecure
+rem modified on: 2024-02-27
 rem ===========================================================
 
 setlocal enableextensions
 setlocal enabledelayedexpansion
 
 rem defaults
-(set browser=chrome.exe)
+(set browser=brave.exe)
 (set protocol=https://)
 
 :menu
@@ -22,7 +22,7 @@ title "Is my Website inSecure?"
 cls
 echo.
 echo. ===========================================================
-echo.     GDPR - Is my Website inSecure?                      
+echo.   Is my Website InSecure?                      
 echo.                                                         
 echo.   1. Test Website                                       
 echo.   2.   choose browser (optional)                        
@@ -37,8 +37,15 @@ echo.   websites whose owners have given you permission to do
 echo.   so. In addition, always make a vulnerability analysis 
 echo.   (ex. OWASP ZAP). This is a Free Tool.                     
 echo.                                                         
-echo.  (c)2019 r1.5 Oscar Azevedo                             
+echo.  (c)2024 r1.7 Oscar Azevedo                             
 echo. ===========================================================
+echo.
+
+echo. ======= Defaults =======
+echo. Browser = %browser%
+echo. Protocol = %protocol%
+echo. Option = 1. Test Website
+echo. ========================
 echo.
 
 choice /c 123FLX /n /m " Choose an option (1,2,3,F,L,X) ? "
@@ -56,6 +63,7 @@ set host=!site:*//=!
 rem remove forward slash
 if [%host:~-1%]==[/] (set host=!host:~0,-1!)
 
+if [%browser%]==[brave.exe]   (set private=incognito)
 if [%browser%]==[chrome.exe]  (set private=incognito)
 if [%browser%]==[msedge.exe]  (set private=private)
 if [%browser%]==[firefox.exe] (set private=private-window)
@@ -73,9 +81,9 @@ for /f "tokens=2,3 delims=." %%a in ("%host%") do set domain=%%a.%%b
 @echo.  browser = %browser%
 @echo.  private = %private%
 @echo.
-timeout /t 30
+timeout /t 10
 
-start %browser% -new-tab -%private% %url%
+start %browser% -new-window -%private% %url%
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://pentest-tools.com/network-vulnerability-scanning/tcp-port-scanner-online-nmap/"
@@ -90,6 +98,9 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://haveibeenpwned.com/"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://powerdmarc.com/dkim-record-lookup/"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://domain-checker.valimail.com/dmarc/%domain%"
 timeout /t 2 >nul
 
@@ -99,7 +110,13 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://securityheaders.com/?followRedirects=on&hide=on&q=%url%"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/index.html?host=%host%"
+start %browser% -new-tab -%private% "https://csp-evaluator.withgoogle.com/?csp=%url%"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://report-uri.com/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/%host%?third-party=false"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://webcheck.pt/pt/dns/loading.php?domain=%domain%"
@@ -108,16 +125,37 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://internet.nl/site/%host%/"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"
-timeout /t 2 >nul
-
-start %browser% -new-tab -%private% "https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project"
-timeout /t 2 >nul
-
 start %browser% -new-tab -%private% "https://owasp.org/www-project-top-ten/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.immuniweb.com/darkweb/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.immuniweb.com/cloud/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.immuniweb.com/email/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.immuniweb.com/websec/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.zaproxy.org/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.tenable.com/products/nessus/nessus-essentials"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://snyk.io/product/snyk-code/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://cisofy.com/lynis/"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://learn.cisecurity.org/cis-cat-lite"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.ezigdpr.com/products/gdpr-website-compliance-checker"
@@ -146,10 +184,11 @@ goto :end
 
 :Label-2    Choose Browser
 @echo.
-choice /n /c cefx /m "  Choose the browser: (C)hrome, (E)dge Chromium, (F)irefox ? "
-if ERRORLEVEL 1 (set browser=chrome.exe)
-if ERRORLEVEL 2 (set browser=msedge.exe)
-if ERRORLEVEL 3 (set browser=firefox.exe)
+choice /n /c bcefx /m "  Choose the browser: (B)rave, (C)hrome, (E)dge, (F)irefox ? "
+if ERRORLEVEL 1 (set browser=brave.exe)
+if ERRORLEVEL 2 (set browser=chrome.exe)
+if ERRORLEVEL 3 (set browser=msedge.exe)
+if ERRORLEVEL 4 (set browser=firefox.exe)
 goto :menu
 
 
@@ -220,5 +259,3 @@ goto :menu
 (set browser=)
 (set protocol=)
 endlocal
-
-
