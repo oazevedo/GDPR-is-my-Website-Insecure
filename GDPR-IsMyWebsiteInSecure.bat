@@ -7,7 +7,7 @@ rem ===========================================================
 rem developed by Oscar Azevedo
 rem oscar.azevedo@aeportugal.pt, oscar.msazevedo@gmail.com
 rem run webtools to see if website is insecure
-rem modified on: 2024-02-27
+rem modified on: 2024-05-01
 rem ===========================================================
 
 setlocal enableextensions
@@ -15,18 +15,17 @@ setlocal enabledelayedexpansion
 
 rem defaults
 (set browser=brave.exe)
-(set protocol=https://)
+(set protocol=https)
 
 :menu
 title "Is my Website inSecure?"
 cls
 echo.
 echo. ===========================================================
-echo.   Is my Website InSecure?                      
+echo.   Is my Website InSecure?                               
 echo.                                                         
 echo.   1. Test Website                                       
-echo.   2.   choose browser (optional)                        
-echo.   3.   choose protocol (optional)                       
+echo.   2. Choose browser (optional)                          
 echo.                                                         
 echo.   F. Free Webtools used and Metrics                     
 echo.   L. Legal and Privacy Terms                            
@@ -35,55 +34,83 @@ echo.
 echo.   Important: You should only use this tool to analyze   
 echo.   websites whose owners have given you permission to do 
 echo.   so. In addition, always make a vulnerability analysis 
-echo.   (ex. OWASP ZAP). This is a Free Tool.                     
+echo.   (ex. OWASP ZAP). This is a Free Tool.                 
 echo.                                                         
-echo.  (c)2024 r1.7 Oscar Azevedo                             
+echo.  (c)2024 r1.9 Oscar Azevedo                             
 echo. ===========================================================
 echo.
 
-echo. ======= Defaults =======
-echo. Browser = %browser%
-echo. Protocol = %protocol%
-echo. Option = 1. Test Website
-echo. ========================
-echo.
-
-choice /c 123FLX /n /m " Choose an option (1,2,3,F,L,X) ? "
-goto Label-%ERRORLEVEL%
-
-
-:Label-1    Test Website
-echo.
-set /p site="  What is the website to analyze? "
-if [%site%]==[] goto :menu
-
-rem remove the protocol http:// or https:// from the website name
-set host=!site:*//=!
-
-rem remove forward slash
-if [%host:~-1%]==[/] (set host=!host:~0,-1!)
-
+rem setting browser private mode
 if [%browser%]==[brave.exe]   (set private=incognito)
 if [%browser%]==[chrome.exe]  (set private=incognito)
 if [%browser%]==[msedge.exe]  (set private=private)
 if [%browser%]==[firefox.exe] (set private=private-window)
 
-rem url = protocol + host
-(set url=%protocol%%host%)
+echo. ======= Defaults =========
+echo. Browser  = %browser%
+echo. Protocol = %protocol%
+echo. Option   = 1. Test Website
+echo. ==========================
+echo.
 
-for /f "tokens=2,3 delims=." %%a in ("%host%") do set domain=%%a.%%b
+rem choice /c 12FLX /n /m " Choose an option (1,2,F,L,X) ? "
+choice /t 10 /c 12FLX /d 1 /n /m " Choose an option (1,2,F,L,X) ? "
+goto Label-%ERRORLEVEL%
 
-@echo.
-@echo. protocol = %protocol%
-@echo.     site = %host%
-@echo.   domain = %domain%
-@echo.      url = %url%
-@echo.  browser = %browser%
-@echo.  private = %private%
-@echo.
-timeout /t 10
 
-start %browser% -new-window -%private% %url%
+:Label-1    Test Website
+echo.
+
+rem url = scheme + host + port + ..., ex. https://www.aeportugal.com 
+rem scheme = https or http
+rem host = like www.example.com
+
+rem Prompt for URL
+set /p "url=What is the website to analyze? "
+if [%url%]==[] goto :menu
+
+rem If url not have scheme add https://
+echo %url% | findstr /b /c:"http://" /c:"https://" >nul 2>&1
+if %errorlevel% neq 0 set url=https://%url%
+
+rem get scheme, ex. http or https
+for /f "delims=: tokens=1" %%i in ("%url%") do set "scheme=%%i"
+
+rem get host, ex. www.aeportugal.com
+for /f "delims=/ tokens=2" %%i in ("%url%") do set "host=%%i"
+
+rem get subdomain, if exist
+for /f "delims=. tokens=1,2,3" %%i in ("%host%") do (
+  rem if not exist subdomain
+  if "%%k"=="" (
+    set domain=%%i.%%j
+    set subdomain=
+  ) else (
+    set domain=%%j.%%k
+    set subdomain=%%i
+  )
+)
+
+echo.
+echo       url: %url%
+echo    scheme: %scheme%
+echo      host: %host%
+echo subdomain: %subdomain%
+echo    domain: %domain%
+echo   browser: %browser%
+echo   private: %private%
+echo.
+
+timeout /t -1
+
+
+start %browser% -new-window -%private% "https://checkcybersecurity.service.ncsc.gov.uk/ip-check/form"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://checkcybersecurity.service.ncsc.gov.uk/browser-check/form"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% %url%
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://pentest-tools.com/network-vulnerability-scanning/tcp-port-scanner-online-nmap/"
@@ -92,7 +119,7 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://www.wpsec.com/"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://sitecheck.sucuri.net/results/%url%"
+start %browser% -new-tab -%private% "https://sitecheck.sucuri.net/results/%host%"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://haveibeenpwned.com/"
@@ -102,6 +129,9 @@ start %browser% -new-tab -%private% "https://powerdmarc.com/dkim-record-lookup/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://domain-checker.valimail.com/dmarc/%domain%"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://checkcybersecurity.service.ncsc.gov.uk/email-security-check/results?domain=%domain%"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.ssllabs.com/ssltest/analyze.html?d=%url%&hideResults=on&latest"
@@ -146,7 +176,13 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://www.zaproxy.org/"
 timeout /t 2 >nul
 
+start %browser% -new-tab -%private% "https://portswigger.net/burp/communitydownload"
+timeout /t 2 >nul
+
 start %browser% -new-tab -%private% "https://www.tenable.com/products/nessus/nessus-essentials"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://community.greenbone.net/getting-started/greenbone-community-edition-via-linux-distribution-packages/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://snyk.io/product/snyk-code/"
@@ -158,11 +194,11 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://learn.cisecurity.org/cis-cat-lite"
 timeout /t 2 >nul
 
-start %browser% -new-tab -%private% "https://www.ezigdpr.com/products/gdpr-website-compliance-checker"
+start %browser% -new-tab -%private% "https://www.cookiebot.com/en/compliance-test/?domain=%host%"
 timeout /t 2 >nul
 
-rem start %browser% -new-tab -%private% "https://batchspeed.com/"
-rem timeout /t 2 >nul
+start %browser% -new-tab -%private% "https://hub.sovy.com/gdpr-scan/?domain=%host%"
+timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://developers.google.com/speed/pagespeed/insights/?url=%url%"
 timeout /t 2 >nul
@@ -175,9 +211,6 @@ timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://jigsaw.w3.org/css-validator/validator?uri=%url%&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en"
 timeout /t 2 >nul
-
-rem start %browser% -new-tab -%private% "https://website.grader.com/results/%url%"
-rem timeout /t 2 >nul
 
 goto :end
 
@@ -192,15 +225,7 @@ if ERRORLEVEL 4 (set browser=firefox.exe)
 goto :menu
 
 
-:Label-3    Choose Protocol
-@echo.
-choice /n /c hs /m " Choose the protocol: (h)ttp: or http(s): ? "
-if ERRORLEVEL 1 (set protocol=http://)
-if ERRORLEVEL 2 (set protocol=https://)
-goto :menu
-
-
-:Label-4      Free Webtools and Metrics
+:Label-3      Free Webtools and Metrics
 @echo.
 @echo. We use the following free web tools. Our thanks and appreciation to those who develop and maintain.
 @echo.
@@ -224,7 +249,6 @@ goto :menu
 @echo.    "https://www.ezigdpr.com/"         metric: no action required
 @echo.
 @echo. 3. category:quality, target:developers
-rem @echo.    "https://batchspeed.com/"          metric: 90
 @echo.    "https://developers.google.com/"   metric: 90 
 @echo.    "https://gtmetrix.com/"            metric: 90
 @echo.    "https://validator.w3.org/"        metric: no errors
@@ -234,7 +258,7 @@ pause
 goto :menu
 
 
-:Label-5     Legal & Privacy
+:Label-4     Legal & Privacy
 @echo.
 @echo. Very Important:
 @echo.
@@ -250,12 +274,13 @@ pause
 goto :menu
 
 
-:Label-6
+:Label-5
 :end
-(set site=)
 (set url=)
+(set scheme=)
+(set host=)
+(set subdomain=)
 (set domain=)
-(set private=)
 (set browser=)
-(set protocol=)
+(set private=)
 endlocal
