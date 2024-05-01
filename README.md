@@ -13,4 +13,4 @@ Important: You should only use this tool to analyze websites whose owners have g
 
 
 GDPR-IsMyWebsiteInSecure.bat  
-SHA256: FE3836E63BE5AB2FB6270A3073DFC753C96243ED4A75A01AD0161D9BE777252F
+SHA256: e179b67057d985a74b6b831413631b436120287a3b30cf9f3a9486f8a4535a83
