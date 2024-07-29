@@ -38,7 +38,7 @@ echo.   websites whose owners have given you permission to do
 echo.   so. In addition, always make a vulnerability analysis 
 echo.   (ex. OWASP ZAP). This is a Free Tool.                 
 echo.                                                         
-echo.  (c)2024 r2.0 Oscar Azevedo                             
+echo.  (c)2024 r2.1 Oscar Azevedo                             
 echo. ===========================================================
 echo.
 
