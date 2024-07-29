@@ -160,7 +160,6 @@ timeout /t 2 >nul
 start %browser% -new-tab -%private% "https://report-uri.com/"
 timeout /t 2 >nul
 
-rem start %browser% -new-tab -%private% "https://observatory.allizom.org/analyze/%host%?third-party=false"
 start %browser% -new-tab -%private% "https://developer.mozilla.org/en-US/observatory/analyze?host=%host%"
 timeout /t 2 >nul
 
