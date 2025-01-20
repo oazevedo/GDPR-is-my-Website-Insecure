@@ -7,7 +7,7 @@ rem ===========================================================
 rem developed by Oscar Azevedo
 rem oscar.azevedo@aeportugal.pt, oscar.msazevedo@gmail.com
 rem run webtools to see if website is insecure
-rem modified on: 2024-05-03
+rem modified on: 2025-01-20
 rem ===========================================================
 
 setlocal enableextensions
@@ -38,7 +38,7 @@ echo.   websites whose owners have given you permission to do
 echo.   so. In addition, always make a vulnerability analysis 
 echo.   (ex. OWASP ZAP). This is a Free Tool.                 
 echo.                                                         
-echo.  (c)2024 r2.1 Oscar Azevedo                             
+echo.  (c)2025 r2.2 Oscar Azevedo                             
 echo. ===========================================================
 echo.
 
@@ -95,10 +95,15 @@ for /f "delims=. tokens=1,2,3" %%i in ("%host%") do (
   )
 )
 
+rem get IPv4 Adddress
+for /f "tokens=2 delims=[]" %%i in ('ping -4 -n 1 %host% ^| find "Pinging"') do (
+    set IPv4=%%i
+)
+
 echo.
 echo       url: %url%
 echo    scheme: %scheme%
-echo      host: %host%
+echo      host: %host%  %IPv4%
 echo subdomain: %subdomain%
 echo    domain: %domain%
 echo   browser: %browser%
@@ -193,6 +198,9 @@ start %browser% -new-tab -%private% "https://www.immuniweb.com/websec/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.shodan.io/host/%IPv4%"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.zaproxy.org/"
