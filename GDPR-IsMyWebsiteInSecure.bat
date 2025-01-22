@@ -7,7 +7,7 @@ rem ===========================================================
 rem developed by Oscar Azevedo
 rem oscar.azevedo@aeportugal.pt, oscar.msazevedo@gmail.com
 rem run webtools to see if website is insecure
-rem modified on: 2025-01-20
+rem modified on: 2025-01-22
 rem ===========================================================
 
 setlocal enableextensions
@@ -38,7 +38,7 @@ echo.   websites whose owners have given you permission to do
 echo.   so. In addition, always make a vulnerability analysis 
 echo.   (ex. OWASP ZAP). This is a Free Tool.                 
 echo.                                                         
-echo.  (c)2025 r2.2 Oscar Azevedo                             
+echo.  (c)2025 r2.3 Oscar Azevedo                             
 echo. ===========================================================
 echo.
 
@@ -198,6 +198,9 @@ start %browser% -new-tab -%private% "https://www.immuniweb.com/websec/"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"
+timeout /t 2 >nul
+
+start %browser% -new-tab -%private% "https://www.shodan.io/domain/%domain%"
 timeout /t 2 >nul
 
 start %browser% -new-tab -%private% "https://www.shodan.io/host/%IPv4%"
